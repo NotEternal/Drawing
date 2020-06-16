@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Draw Doodle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">Draw Doodle - просто проведи</h1>
+    </header>
+    <main class="main">
+        <aside class="main__sidebar">
+            <button class="sidebar-toggle active"></button>
+            <ul class="sidebar-list-combinations">
+                <li class="sidebar-list__item">клавиша "<b>C</b>" - очистит экран</li>
+                <li class="sidebar-list__item">клавиша "<b>S</b>" - сохранит рисунок</li>
+                <li class="sidebar-list__item">клавиша "<b>R</b>" - повторит рисунок</li>
+            </ul>
+            <label class="sidebar-label">Толщина линии
+                <input type="number" class="input-line-width" placeholder="5">
+            </label>
+            <label class="sidebar-label">Цвет линии
+                <div class="line-color-palette">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#fff" checked>
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#000">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#181818">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#BF3F3F">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#BF7F3F">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#BFBF3F">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#7FBF3F">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#3FBF3F">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#3FBFBF">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#3F7FBF">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#3F3FBF">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#7F3FBF">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#BF3FBF">
+                    <input type="radio" name="line-color" class="color-palette__radio" value="#BF3F7F">
+                </div>
+            </label>
+            <label class="sidebar-label">Цвет фона
+                <div class="background-color-palette">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#fff">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#000">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#181818" checked>
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#BF3F3F">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#BF7F3F">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#BFBF3F">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#7FBF3F">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#3FBF3F">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#3FBFBF">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#3F7FBF">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#3F3FBF">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#7F3FBF">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#BF3FBF">
+                    <input type="radio" name="background-color" class="color-palette__radio" value="#BF3F7F">
+                </div>
+            </label>
+            <button class="button-apply">применить</button>
+        </aside>
+        <canvas id="canvas">Your browser does not support canvas. Refresh your browser or install another
+            browser.</canvas>
+    </main>
+    <footer class="footer"></footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
