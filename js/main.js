@@ -1,29 +1,27 @@
 'use strict';
 
-const sidebarToogle = document.querySelector('.sidebar-toggle');
-const sidebar = document.querySelector('.main__sidebar');
+const settingsToggle = document.querySelector('.settings__toggle');
+const settingsBtnClose = document.querySelector('.settings__btn-close');
+const settings = document.querySelector('.main__settings');
 
-sidebarToogle.onclick = () => {
-  if (sidebarToogle.classList.contains('active')) {
-    sidebarToogle.classList.remove('active');
-    sidebar.classList.add('hide');
-  } else {
-    sidebarToogle.classList.add('active');
-    sidebar.classList.remove('hide');
+settingsToggle.onclick = () => settings.classList.remove('hide');
+settingsBtnClose.onclick = () => settings.classList.add('hide');
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Escape') {
+    settings.classList.add('hide');
   }
-};
+});
 
-
-
-const buttonApply = document.querySelector('.button-apply');
+const btnApply = document.querySelector('.settings__btn-apply');
 let lineWidth = 5;
 let lineColor = '#fff';
 let bodyStyle = document.querySelector('body').style;
 
-buttonApply.onclick = () => {
+btnApply.onclick = () => {
   lineWidth = document.querySelector('.input-line-width').value;
-  lineColor = document.querySelector('input[name="line-color"]:checked').value;
-  bodyStyle.backgroundColor = document.querySelector('input[name="background-color"]:checked').value;
+  lineColor = document.querySelector('input[name="line-color"]').value;
+  bodyStyle.backgroundColor = document.querySelector('input[name="bg-color"]').value;
 };
 
 
@@ -34,8 +32,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
-let mouseDown;
+let mouseDown = false;
 let mouseCoordinateList = [];
 
 canvas.addEventListener('mousedown', () => mouseDown = true);
@@ -45,32 +42,31 @@ canvas.addEventListener('mouseup', () => {
   mouseCoordinateList.push('mouseup');
 });
 
-canvas.addEventListener('mousemove', (evt) => {
+canvas.addEventListener('mousemove', (event) => {
   if (mouseDown) {
     mouseCoordinateList.push({
-      clientX : evt.clientX,
-      clientY : evt.clientY
+      clientX: event.clientX,
+      clientY: event.clientY
     });
 
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = lineColor;
     ctx.fillStyle = lineColor;
 
-    drawsMousePath(evt);
+    drawsMousePath(event);
   }
 });
 
-
-document.addEventListener('keydown', (evt) => {
+document.addEventListener('keydown', (event) => {
   const KEY_C = 67;
   const KEY_S = 83;
   const KEY_R = 82;
 
-  if (evt.keyCode === KEY_C) {
+  if (event.keyCode === KEY_C) {
     cleansCanvas();
-  } else if (evt.keyCode === KEY_S) {
+  } else if (event.keyCode === KEY_S) {
     savesDrawing();
-  } else if (evt.keyCode === KEY_R) {
+  } else if (event.keyCode === KEY_R) {
     repeatsDrawing();
   }
 });
@@ -100,17 +96,17 @@ function repeatsDrawing() {
 }
 
 
-function drawsMousePath(evt) {
+function drawsMousePath(event) {
   // draws a line
-  ctx.lineTo(evt.clientX, evt.clientY);
+  ctx.lineTo(event.clientX, event.clientY);
   ctx.stroke();
 
   // draws a circle
   ctx.beginPath();
-  ctx.arc(evt.clientX, evt.clientY, lineWidth / 2, 0, Math.PI * 2);
+  ctx.arc(event.clientX, event.clientY, lineWidth / 2, 0, Math.PI * 2);
   ctx.fill();
 
   // updates path
   ctx.beginPath();
-  ctx.moveTo(evt.clientX, evt.clientY);
+  ctx.moveTo(event.clientX, event.clientY);
 }
